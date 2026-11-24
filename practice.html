@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Отчет по практике — Учебная практика 04</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .pr-preview-box {
+            margin: 14px 0;
+            padding: 8px;
+            background: #ffffff;
+            border: 1.5px solid #8ea5c4;
+            border-radius: 4px;
+            text-align: center;
+        }
+        .pr-preview-box img {
+            max-width: 100%;
+            max-height: 360px;
+            border: 1px solid #3b5984;
+            border-radius: 2px;
+            object-fit: contain;
+        }
+        .pr-preview-caption {
+            margin-top: 6px;
+            font-size: 11px;
+            color: #556680;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<div class="xp-window">
+    <img src="images/sonic6.png" alt="Metal Sonic Look" class="sticker sticker-top-right">
+    <img src="images/sonic5.png" alt="Metal Sonic Sit" class="sticker sticker-bottom-left">
+
+    <div class="xp-titlebar">
+        <div class="xp-title-text mc-font">Просмотр отчета</div>
+        <div class="xp-controls">
+            <span>_</span><span>□</span><span class="close-btn">×</span>
+        </div>
+    </div>
+
+    <div class="xp-menubar">
+        <a href="index.html">Главная</a>
+        <a href="practices.html">← К списку практик</a>
+        <a href="gallery.html">Галерея</a>
+    </div>
+
+    <div class="xp-single-col">
+        <div class="sub-panel">
+            <div class="sub-panel-header mc-font" id="pr-title">Практическая работа</div>
+            
+            <p><strong>Суть задания:</strong></p>
+            <p id="pr-task" style="background:#fff; padding:10px; border:1px solid #cbd8eb; border-radius:4px;"></p>
+
+            <p><strong>Результат выполнения:</strong></p>
+            <p id="pr-result" style="background:#fff; padding:10px; border:1px solid #cbd8eb; border-radius:4px;"></p>
+
+            <div class="pr-preview-box">
+                <img id="pr-img" src="images/screen1.png" alt="Скриншот результата">
+                <div id="pr-caption" class="pr-preview-caption"></div>
+            </div>
+
+            <a id="pr-download" href="#" class="xp-btn" download>⬇ Скачать файл отчета</a>
+            <a href="practices.html" class="xp-btn">← Назад к списку</a>
+        </div>
+    </div>
+
+    <div class="xp-statusbar">
+        <span>Документ готов к загрузке</span>
+        <span>УП04 • 2026</span>
+    </div>
+</div>
+
+<script>
+    const practicesData = {
+        1: {
+            title: "УП 04. Работа с мультимедийными приложениями",
+            task: "Разработать с нуля минутный учебный видеоролик (включая графику, звуковую заставку и монтаж).",
+            result: "Разработан минутный ролик и проведено сравнение разных форматов сжатие.",
+            file: "docs/pr1.docx",
+            img: "images/screen0.png",
+            caption: "Первый из готовых слайдов"
+        },
+        2: {
+            title: "Практика от 03.09: Работа с устройствами компьютерной системы",
+            task: "Анализ аппаратной конфигурации персонального компьютера с помощью диагностических утилит (CPU-Z, AIDA64).",
+            result: "Определены и сведены в таблицу характеристики процессора (Intel Core i5-12400), материнской платы (INFERIT H610mITX), BIOS и модулей оперативной памяти DDR4.",
+            file: "docs/pr2.docx",
+            img: "images/screen1.png",
+            caption: "Скриншот результата: Характеристики ЦП и ОЗУ"
+        },
+        3: {
+            title: "Практика от 08.09: Установка и настройка различных операционных систем",
+            task: "Развертывание виртуальных машин в среде Oracle VirtualBox и установка гостевых операционных систем семейства Windows.",
+            result: "Успешно созданы и настроены виртуальные машины с ОС Windows 10 и Windows 11, выполнена базовая конфигурация и установка прикладного ПО (браузеры, архиваторы, VLC).",
+            file: "docs/pr3.docx",
+            img: "images/screen2.png",
+            caption: "Скриншот результата: Настройка виртуальной машины в VirtualBox"
+        },
+        4: {
+            title: "Практика от 12.09: Работа с файловыми системами, различными форматами",
+            task: "Изучение свойств файловой системы NTFS, управление каталогами и файлами, освоение программ-архиваторов.",
+            result: "Отработаны операции создания, копирования, перемещения и восстановления файлов в Проводнике и 7-Zip, выполнено сжатие данных в форматы ZIP и 7z, проанализированы параметры системного диска.",
+            file: "docs/pr4.docx",
+            img: "images/screen4.png",
+            caption: "Скриншот результата: Работа с файлами в архиваторе 7-Zip"
+        },
+        5: {
+            title: "Практика от 15.09: Ведение отчетной и технической документации",
+            task: "Оформление текстового документа по требованиям ГОСТ, создание сравнительных таблиц и разработка информационной графики.",
+            result: "Подготовлен структурированный технический документ с заголовками, сносками и таблицами, а также создана наглядная инфографика «Эволюция веб-запроса» с диаграммами.",
+            file: "docs/pr5.docx",
+            img: "images/screen7.png",
+            caption: "Скриншот результата: Готовая инфографика «Эволюция веб-запроса»"
+        },
+        6: {
+            title: "Практика от 03.10: Работа с устройствами компьютерной системы",
+            task: "Комплексная диагностика, мониторинг датчиков и программная оптимизация операционной системы в виртуальной среде.",
+            result: "Проведено тестирование памяти и накопителей в AIDA64 и HWiNFO64, созданы новые разделы диска в Управлении дисками и выполнена оптимизация фоновых процессов с помощью BoosterX.",
+            file: "docs/pr6.docx",
+            img: "images/screen9.png",
+            caption: "Скриншот результата: Диагностика системы в утилите AIDA64"
+        },
+        7: {
+            title: "УП04: Работа в текстовом процессоре",
+            task: "Углубленное форматирование научно-технического текста в MS Word: автозамена, многоуровневые списки, формулы, оглавление и колонтитулы.",
+            result: "Оформлен документ о сенсорных устройствах в ИИС с математическими формулами, блок-схемой, автособираемым оглавлением, списком литературы по ГОСТ и экспортом в PDF и HTML.",
+            file: "docs/pr7.docx",
+            img: "images/screen12.png",
+            caption: "Скриншот результата: Формулы и блок-схема в текстовом процессоре"
+        },
+        8: {
+            title: "Работа с Excel: Работа в редакторе электронных таблиц",
+            task: "Создание расчетных таблиц, применение встроенных формул, логических функций, условного форматирования и построение диаграмм.",
+            result: "Разработана электронная таблица с автоматизированными вычислениями, сводными показателями и графической визуализацией данных.",
+            file: "docs/pr8.xlsx",
+            img: "images/screen14.png",
+            caption: "Скриншот результата: Расчетная таблица и диаграммы в Excel"
+        },
+        9: {
+            title: "Работа с PowerPoint: Создание презентации для IT клуба",
+            task: "Разработка структурированной мультимедийной презентации с единым дизайном, анимацией и инфографикой для IT-сообщества.",
+            result: "Создана презентация для IT-клуба с продуманной композицией слайдов, наглядными схемами, фирменной цветовой палитрой и плавными переходами.",
+            file: "docs/pr9.pptx",
+            img: "images/screen15.png",
+            caption: "Скриншот результата: Слайды презентации для IT клуба"
+        },
+        10: {
+            title: "Работа с PowerPoint: Создание связанных документов (Связь с таблицами Excel)",
+            task: "Освоение технологии динамического связывания данных (OLE) между электронными таблицами Excel и слайдами презентации PowerPoint.",
+            result: "Настроена автоматическая синхронизация таблиц и диаграмм из книги Excel в презентацию PowerPoint с проверкой мгновенного обновления данных при изменении исходников.",
+            file: "docs/pr10.pptx",
+            img: "images/screen16.png",
+            caption: "Скриншот результата: Связь диаграммы PowerPoint с таблицей Excel"
+        }
+    };
+
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('id') || 1;
+    const data = practicesData[id] || practicesData[1];
+
+    document.getElementById('pr-title').textContent = data.title;
+    document.getElementById('pr-task').textContent = data.task;
+    document.getElementById('pr-result').textContent = data.result;
+    document.getElementById('pr-download').href = data.file;
+    document.getElementById('pr-img').src = data.img;
+    document.getElementById('pr-caption').textContent = data.caption;
+</script>
+</body>
+</html>
